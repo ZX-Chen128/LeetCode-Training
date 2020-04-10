@@ -1,28 +1,32 @@
 package test;
 
-import java.util.*;
+import Algorithms.AddTwoNumber;
+
+import java.io.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class test {
 
-    public static void main(String[] args) {
+    /*
+    private volatile int count = 0;
 
-        Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
-        String[] ss = new String[1000];
-        int i = 0;
-        while(sc.hasNext()){
+    public synchronized void increment(){
+        count++;
+    }
 
-            String s = sc.next();
-            ss[i] = s;
-            i++;
+    public int getCount(){
+        return count;
+    }
+     */
 
-        }
-        for(int j = i;j>=0;j--){
-            sb.append(ss[j]);
-        }
+    public AtomicInteger count = new AtomicInteger(0);
 
-        System.out.println(sb.toString());
+    public void increment(){
+        count.incrementAndGet();
+    }
 
+    public int getCount(){
+        return count.get();
     }
 
 }
