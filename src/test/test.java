@@ -1,41 +1,25 @@
 package test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
- *
- * 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
- *
- * 示例:
- *
- * 给定 nums = [2, 7, 11, 15], target = 9
- *
- * 因为 nums[0] + nums[1] = 2 + 7 = 9
- * 所以返回 [0, 1]
+ * 编写一个函数来查找字符串数组中的最长公共前缀。
+ * <p>
+ * 如果不存在公共前缀，返回空字符串 ""。
+ * <p>
+ * 示例 1:
+ * <p>
+ * 输入: ["flower","flow","flight"]
+ * 输出: "fl"
+ * 示例 2:
+ * <p>
+ * 输入: ["dog","racecar","car"]
+ * 输出: ""
+ * 解释: 输入不存在公共前缀。
  */
 
 public class test {
-
-    public int[] test(int[] nums , int target){
-
-        Map<Integer,Integer> hashMap = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if(hashMap.containsKey(target-nums[i]))
-                return new int[]{hashMap.get(target-nums[i]),i};
-            hashMap.put(nums[i],i);
-        }
-        return null;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {2,7,11,15};
-        int target = 9;
-        test t = new test();
-        for(int i : t.test(nums,target)){
-            System.out.println(i);
-        }
-    }
 
 }
