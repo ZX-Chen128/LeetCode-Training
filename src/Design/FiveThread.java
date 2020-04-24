@@ -8,6 +8,7 @@ import java.util.concurrent.*;
 public class FiveThread {
 
     static class MyThread extends Thread {
+        @Override
         public void run(){
             System.out.println("Hello World! MyThread!");
         }
