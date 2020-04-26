@@ -1,6 +1,19 @@
 package Algorithms;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 输入: "abcabcbb"
+ * 输出: 3
+ * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+ *
+ * 输入: "pwwkew"
+ * 输出: 3
+ * 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+ *      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+ *
+ */
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
@@ -8,14 +21,13 @@ public class LongestSubstringWithoutRepeatingCharacters {
         Map<Character,Integer> map = new HashMap<>();
         int i = 0;
         int j = 0;
-        int ans = j-i;
-        int n = s.length();
-        for (; j < n; j++) {
+        int ans = 0;
+        for (; j < s.length(); j++) {
             if(map.containsKey(s.charAt(j))){
-                i = Math.max(map.get(s.charAt(j)),i);
+                i = Math.max(i,map.get(s.charAt(j)));
             }
             map.put(s.charAt(j),j+1);
-            ans = Math.max(j-i+1,ans);
+            ans = Math.max(ans,j-i+1);
         }
         return ans;
     }
