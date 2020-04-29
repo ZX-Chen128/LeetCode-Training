@@ -22,19 +22,19 @@ package Algorithms;
 public class IntegertoRoman {
 
     public String intToRoman(int num) {
-        StringBuffer str = new StringBuffer();
-        int[] nums = {1,4,5,9,10,40,50,90,100,400,500,900,1000};
-        String[] strs = {"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
-        int index = 12;
-        while(num>=1){
-            if(num>=nums[index]){
-                str.append(strs[index]);
-                num -= nums[index];
+        String[] strs = new String[]{"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+        int[] nums = new int[]{1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+        int length = 12;
+        StringBuilder s = new StringBuilder(0);
+        while (num > 0) {
+            if (num >= nums[length]) {
+                num -= nums[length];
+                s.append(strs[length]);
             } else {
-                index--;
+                length--;
             }
         }
-        return str.toString();
+        return s.toString();
     }
 
     public static void main(String[] args) {
