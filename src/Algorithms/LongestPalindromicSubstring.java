@@ -1,43 +1,54 @@
 package Algorithms;
 
 public class LongestPalindromicSubstring {
+
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
             return "";
         }
-//         保存起始位置，测试了用数组似乎能比全局变量稍快一点
-        int[] range = new int[2];
-        char[] str = s.toCharArray();
-        for (int i = 0; i < s.length(); i++) {
-//             把回文看成中间的部分全是同一字符，左右部分相对称
-//             找到下一个与当前字符不同的字符
-            i = findLongest(str, i, range);
+        int n = s.length();
+        boolean[][] isPalindrome = new boolean[n + 1][n + 1];
+        String max = "";
+        for (int j = 0; j < n + 1; j++) {
+            for (int i = j; i >= 0; i--) {
+                if (i == j || i + 1 == j) {
+                    isPalindrome[i][j] = true;
+                } else if (s.charAt(i) == s.charAt(j - 1) && isPalindrome[i + 1][j - 1]) {
+                    isPalindrome[i][j] = true;
+                }
+
+                if (i != j && isPalindrome[i][j] && max.length() < j - i) {
+                    max = s.substring(i, j);
+                }
+            }
         }
-        return s.substring(range[0], range[1] + 1);
+        return max;
     }
 
-    public static int findLongest(char[] str, int low, int[] range) {
-//         查找中间部分
-        int high = low;
-        while (high < str.length - 1 && str[high + 1] == str[low]) {
-            high++;
+    public String longestPalindrome2(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
         }
-//         定位中间部分的最后一个字符
-        int ans = high;
-//         从中间向左右扩散
-        while (low > 0 && high < str.length - 1 && str[low - 1] == str[high + 1]) {
-            low--;
-            high++;
+        int n = s.length();
+        String max = "";
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (isPalindrom(s.substring(i, j + 1)) && j - i + 1 > max.length()) {
+                    max = s.substring(i, j + 1);
+                }
+            }
         }
-//         记录最大长度
-        if (high - low > range[1] - range[0]) {
-            range[0] = low;
-            range[1] = high;
-        }
-        return ans;
+        return max;
+    }
+
+    public boolean isPalindrom(String s) {
+        String x = new StringBuilder(s).reverse().toString();
+        return x.equals(s);
     }
 
     public static void main(String[] args) {
+        LongestPalindromicSubstring l = new LongestPalindromicSubstring();
+        System.out.println(l.longestPalindrome("abcbii"));
     }
 
 }
