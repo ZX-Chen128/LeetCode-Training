@@ -32,7 +32,8 @@ public class PalindromeNumber {
         }
         int result = 0;
         while (x > result) {
-            result = result * 10 + x % 10;
+            result *= 10;
+            result += x % 10;
             x /= 10;
         }
         return x == result || x == result / 10;
