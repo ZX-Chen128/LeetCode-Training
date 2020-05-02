@@ -1,9 +1,6 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.UUID;
 
 /**
  * 作者：威尼斯的泪H
@@ -16,5 +13,9 @@ import java.util.Scanner;
  */
 
 public class test {
+
+    public static void main(String[] args) {
+        System.out.println(UUID.randomUUID().toString());
+    }
 
 }
