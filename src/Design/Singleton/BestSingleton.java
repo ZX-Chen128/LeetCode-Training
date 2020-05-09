@@ -6,7 +6,6 @@ public class BestSingleton {
 
     private static class Instance{
         private static BestSingleton instance = new BestSingleton();
-
     }
 
     private BestSingleton(){}
