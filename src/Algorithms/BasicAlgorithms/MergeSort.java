@@ -1,5 +1,7 @@
 package Algorithms.BasicAlgorithms;
 
+import java.util.Arrays;
+
 public class MergeSort {
 
     public static void merge(int[] a, int start, int mid, int end) {
@@ -40,9 +42,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] a = {49, 38, 65, 97, 76, 13, 27, 50};
         mergeSort(a, 0, a.length - 1);
-        System.out.println("排好序的数组：");
-        for (int e : a)
-            System.out.print(e + " ");
+        System.out.println(Arrays.toString(a));
     }
 }
 
