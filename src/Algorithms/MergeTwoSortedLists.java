@@ -1,12 +1,16 @@
 package Algorithms;
 
+/**
+ * 输入：1->2->4, 1->3->4
+ * 输出：1->1->2->3->4->4
+ */
+
 public class MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-
         ListNode dummy = new ListNode(0);
         ListNode head = dummy;
-        while ( l1 != null && l2 != null ){
-            if(l1.val < l2.val){
+        while(l1 != null && l2!= null){
+            if(l1.val <= l2.val){
                 head.next = l1;
                 l1 = l1.next;
             } else {
@@ -15,8 +19,8 @@ public class MergeTwoSortedLists {
             }
             head = head.next;
         }
-        if ( l1 == null ){ head.next = l2; }
-        if ( l2 == null ){ head.next = l1; }
+        if(l1 != null){head.next = l1;}
+        if(l2 != null){head.next = l2;}
 
         return dummy.next;
     }
