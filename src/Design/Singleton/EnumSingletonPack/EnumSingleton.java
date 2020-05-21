@@ -1,4 +1,4 @@
-package Design.Singleton.EnumSingleton;
+package Design.Singleton.EnumSingletonPack;
 
 public enum  EnumSingleton {
 

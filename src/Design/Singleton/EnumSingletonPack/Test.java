@@ -1,4 +1,4 @@
-package Design.Singleton.EnumSingleton;
+package Design.Singleton.EnumSingletonPack;
 
 public class Test {
     public static void main(String[] args) {
