@@ -9,6 +9,21 @@ import java.util.Scanner;
  * 那么请问聪明的你，是否已经知道了应该如何操作呢？
  */
 
+/**
+ * 输入描述:
+ *
+ * 第一行，有1个整数T，表示测试用例的组数。
+ * （1 <= T <= 100）
+ * 接下来T行，每行1个整数N，表示有N个魔术盒子。
+ * （1 <= N <= 1,000,000,000
+ */
+
+/**
+ * 输出描述:
+ *
+ * 共T行，每行1个整数，表示要将所有盒子的球变没，最少需要进行多少次操作。
+ */
+
 public class Main1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

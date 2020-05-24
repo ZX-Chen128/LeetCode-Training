@@ -9,6 +9,18 @@ import java.util.Scanner;
  * 多多鸡的幸运数字是K，它打算把所有满足条件的单词里的字典序第K小的单词找出来，作为字典的封面。
  */
 
+/**
+ * 输入描述:
+ *
+ * 共一行，三个整数N, M, K。(0 < N, M < 50, 0 < K < 1,000,000,000,000,000)
+ */
+
+/**
+ * 输出描述:
+ *
+ * 共一行，为字典序第K小的单词。
+ */
+
 public class Main3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
