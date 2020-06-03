@@ -3,6 +3,8 @@ package Algorithms.Daily.WeekOne.PartOne;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+//快手2020春
+
 /**
  * 多多鸡打算造一本自己的电子字典，里面的所有单词都只由a和b组成。
  * 每个单词的组成里a的数量不能超过N个且b的数量不能超过M个。

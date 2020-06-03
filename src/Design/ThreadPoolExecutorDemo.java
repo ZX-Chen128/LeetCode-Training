@@ -1,4 +1,4 @@
-package InterviewExperience;
+package Design;
 
 import test.MyRunnable;
 

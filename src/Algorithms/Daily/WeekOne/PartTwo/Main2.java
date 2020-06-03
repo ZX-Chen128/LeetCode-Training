@@ -2,6 +2,8 @@ package Algorithms.Daily.WeekOne.PartTwo;
 
 import java.util.*;
 
+//拼多多2020春
+
 /**
  * 给定一个未排序数组,找出其中最长的等差数列(无需保证数字顺序)。
  */

@@ -2,6 +2,8 @@ package Algorithms.Daily.WeekOne.PartOne;
 
 import java.util.Scanner;
 
+//快手2020春
+
 /**
  * 多多鸡有N个魔术盒子（编号1～N），其中编号为i的盒子里有i个球。
  * 多多鸡让皮皮虾每次选择一个数字X（1 <= X <= N），多多鸡就会把球数量大于等于X个的盒子里的球减少X个。

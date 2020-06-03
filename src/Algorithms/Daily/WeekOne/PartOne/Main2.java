@@ -2,6 +2,8 @@ package Algorithms.Daily.WeekOne.PartOne;
 
 import java.util.Scanner;
 
+//快手2020春
+
 /**
  * 数列 {An} 为N的一种排列。
  * 例如N=3，可能的排列共6种：

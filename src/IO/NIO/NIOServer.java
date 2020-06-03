@@ -24,7 +24,7 @@ public class NIOServer {
                 // 对应IO编程中服务端启动
                 ServerSocketChannel listenerChannel = ServerSocketChannel.open();
                 listenerChannel.socket().bind(new InetSocketAddress(3333));
-                listenerChannel.configureBlocking(false);
+                listenerChannel.configureBlocking(false); //重点：非阻塞
                 listenerChannel.register(serverSelector, SelectionKey.OP_ACCEPT);
 
                 while (true) {

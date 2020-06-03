@@ -10,12 +10,16 @@ public class IOServer {
         // TODO 服务端处理客户端连接请求
         ServerSocket serverSocket = new ServerSocket(3333);
 
+        System.out.println("Server established! new ServerSocket(3333)");
+
         // 接收到客户端连接请求之后为每个客户端创建一个新的线程进行链路处理
         new Thread(() -> {
             while (true) {
                 try {
                     // 阻塞方法获取新的连接
                     Socket socket = serverSocket.accept();
+
+                    System.out.println("Connection established!\t" + socket.getPort());
 
                     // 每一个新的连接都创建一个线程，负责读取数据
                     new Thread(() -> {
@@ -25,7 +29,7 @@ public class IOServer {
                             InputStream inputStream = socket.getInputStream();
                             // 按字节流方式读取数据
                             while ((len = inputStream.read(data)) != -1) {
-                                System.out.println(new String(data, 0, len));
+                                System.out.println("Client port "+socket.getPort()+":  "+new String(data, 0, len));
                             }
                         } catch (IOException e) {
                         }
