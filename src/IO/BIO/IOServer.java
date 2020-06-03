@@ -27,7 +27,7 @@ public class IOServer {
                             int len;
                             byte[] data = new byte[1024];
                             InputStream inputStream = socket.getInputStream();
-                            // 按字节流方式读取数据
+                            // 按字节流方式读取数据，read方法同样也是阻塞的
                             while ((len = inputStream.read(data)) != -1) {
                                 System.out.println("Client port "+socket.getPort()+":  "+new String(data, 0, len));
                             }
