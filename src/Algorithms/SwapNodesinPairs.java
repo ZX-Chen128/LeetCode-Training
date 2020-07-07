@@ -19,10 +19,3 @@ public class SwapNodesinPairs {
         return dummy.next;
     }
 }
-
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
-}
