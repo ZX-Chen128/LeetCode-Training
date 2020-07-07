@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class BIOClientDemo {
 
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("127.0.0.1",9900);
+        Socket socket = new Socket("127.0.0.1",3333);
         while(true) {
             Scanner sc = new Scanner(System.in);
             String s = sc.nextLine();
