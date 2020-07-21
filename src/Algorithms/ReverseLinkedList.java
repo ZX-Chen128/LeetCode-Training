@@ -1,5 +1,9 @@
 package Algorithms;
 
+import java.lang.Runnable;
+import java.util.concurrent.Callable;
+import java.util.function.*;
+
 public class ReverseLinkedList {
 
     public static ListNode reverseList(ListNode head) {
