@@ -2,15 +2,15 @@ package Algorithms;
 
 public class RemoveDuplicatesfromSortedArray {
 
-    public int removeDuplicates(int[] nums) {
-        int i = 0;
-        for (int j=1 ; j<nums.length ; j++){
-            if(nums[i] != nums[j]){
-                i ++;
-                nums[i] = nums[j];
+    public static int removeDuplicates(int[] nums) {
+        int fast = 1;
+        int slow = 1;
+        for(;fast<nums.length;fast++){
+            if(nums[fast]!=nums[fast-1]){
+                nums[slow++] = nums[fast];
             }
         }
-        return i+1;
+        return slow;
     }
 
 }
