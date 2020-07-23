@@ -19,15 +19,15 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static int lengthOfLongestSubstring(String s) {
         Map<Character,Integer> map = new HashMap<>();
-        int i = 0;
-        int j = 0;
+        int end = 0;
+        int start = 0;
         int ans = 0;
-        for (; j < s.length(); j++) {
-            if(map.containsKey(s.charAt(j))){
-                i = Math.max(i,map.get(s.charAt(j)));
+        for (; end < s.length(); end++) {
+            if(map.containsKey(s.charAt(end))){
+                start = Math.max(start,map.get(s.charAt(end)));//有时此字符出现过，但是并不在当前的滑动窗口中，需要过滤，所以这里并不是start = map.get(s.charAt(end))
             }
-            map.put(s.charAt(j),j+1);
-            ans = Math.max(ans,j-i+1);
+            map.put(s.charAt(end),end+1);
+            ans = Math.max(ans,end-start+1);
         }
         return ans;
     }
