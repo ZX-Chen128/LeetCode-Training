@@ -1,4 +1,4 @@
-package Algorithms.BasicAlgorithms;
+package Algorithms.BasicAlgorithms.Sorts;
 
 import java.util.Arrays;
 
