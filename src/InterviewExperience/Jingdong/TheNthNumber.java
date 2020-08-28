@@ -8,6 +8,7 @@ package InterviewExperience.Jingdong;
 import java.util.Scanner;
 
 /**
+ * 题目描述：
  * 自从学了素数以后，小明喜欢上了数字2、3、5。当然，如果一个数字里面只出现2、3、5这三个数字，他也
  * 一样喜欢，例如222、2355、223355。
  *
