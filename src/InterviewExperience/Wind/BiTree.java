@@ -10,6 +10,7 @@ public class BiTree {
         List<List<Integer>> answer = new ArrayList<>();
         helper(answer,root,K);
         System.out.println(answer);
+        return answer;
     }
 
     public void helper(List<List<Integer>> answer,TreeNode root, int K){
