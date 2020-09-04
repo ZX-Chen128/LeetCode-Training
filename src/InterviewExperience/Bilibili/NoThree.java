@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 /**
  * [[1, 2, 3, 4], [5, 6, 7, 8], [9,10,11,12] ]
- *
+ * <p>
  * [1,2,3,4,8,12,11,10,9,5,6,7]
  */
 
 public class NoThree {
 
-    public int[] SpiralMatrix(int[][] matrix) {
+    public static int[] SpiralMatrix(int[][] matrix) {
 
         if (matrix == null || matrix.length == 0) {
             return null;
@@ -43,8 +43,15 @@ public class NoThree {
     }
 
     public static void main(String[] args) {
-        int[] sum = new int[10];
-        System.out.println(Arrays.toString(sum));
+        int[][] arrays = new int[3][4];
+        int[] array1 = {1, 2, 3, 4};
+        int[] array2 = {5, 6, 7, 8};
+        int[] array3 = {9, 10, 11, 12};
+        arrays[0] = array1;
+        arrays[1] = array2;
+        arrays[2] = array3;
+
+        System.out.println(Arrays.toString(SpiralMatrix(arrays)));
     }
 
 }
