@@ -19,30 +19,35 @@ package Algorithms;
  * 解释: 从右向左读, 为 01 。因此它不是一个回文数。
  * <p>
  * <p>
- * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/palindrome-number
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
 public class PalindromeNumber {
 
-    public boolean isPalindrome(int x) {
-        if (x < 0 || (x != 0 && x % 10 == 0)) {
+    public static boolean isPalindrome(int x) {
+
+        if(x < 10 && x >= 0){
+            return true;
+        }
+
+        if(x < 0 || x % 10 == 0){
             return false;
         }
-        int result = 0;
-        while (x > result) {
-            result *= 10;
-            result += x % 10;
+
+        int reverse = 0;
+        while(x > reverse){
+            int tail = x % 10;
+            reverse *= 10;
+            reverse += tail;
+            if(reverse == x) break;
             x /= 10;
         }
-        return x == result || x == result / 10;
+        if(reverse == x) return true;
+        return false;
     }
 
 
     public static void main(String[] args) {
-        PalindromeNumber p = new PalindromeNumber();
-        System.out.println(p.isPalindrome(121));
+        System.out.println(isPalindrome(10));
     }
 
 }
