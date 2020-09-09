@@ -19,7 +19,6 @@ public class SearchinRotatedSortedArray {
             if (nums[mid] == target) {
                 return mid;
             }
-
             if (nums[start] <= nums[mid]) {
                 if (target >= nums[start] && target < nums[mid]) {
                     end = mid - 1;
@@ -27,7 +26,7 @@ public class SearchinRotatedSortedArray {
                     start = mid + 1;
                 }
             } else {
-                if (target >= nums[mid] && target < nums[end]) {
+                if(target <= nums[end] && target > nums[mid]){
                     start = mid + 1;
                 } else {
                     end = mid - 1;
@@ -38,8 +37,9 @@ public class SearchinRotatedSortedArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(search(new int[]{1, 3}, 3));
+        System.out.println(search(new int[]{3, 1}, 1));
         System.out.println(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
+        System.out.println(search(new int[]{1, 3}, 3));
         System.out.println(search(new int[]{6, 7, 0, 1, 3, 4, 5}, 0));
         System.out.println(search(new int[]{3, 4, 5, 6, 7, 0, 1}, 0));
     }
