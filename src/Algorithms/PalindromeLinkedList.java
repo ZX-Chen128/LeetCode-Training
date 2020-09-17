@@ -25,27 +25,30 @@ package Algorithms;
 public class PalindromeLinkedList {
 
     public static boolean isPalindrome(ListNode head) {
-        if(head == null || head.next == null) {
-            return true;
-        }
-        ListNode slow = head, fast = head;
-        ListNode pre = head, prepre = null;
-        while(fast != null && fast.next != null) {
-            pre = slow;
-            slow = slow.next;
+        ListNode fast = head;
+        ListNode slow = head;
+
+        ListNode pre = null;
+        ListNode cur = slow;
+
+        while(fast != null && fast.next != null){
             fast = fast.next.next;
-            pre.next = prepre;
-            prepre = pre;
+
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+            slow = cur;
         }
-        if(fast != null) {
-            slow = slow.next;
-        }
-        while(pre != null && slow != null) {
-            if(pre.val != slow.val) {
-                return false;
-            }
-            pre = pre.next;
-            slow = slow.next;
+        if(fast != null) slow = slow.next;
+
+        ListNode l1 = pre;
+        ListNode l2 = slow;
+
+        while(l1 != null && l2 != null){
+            if(l1.val != l2.val) return false;
+            l1 = l1.next;
+            l2 = l2.next;
         }
         return true;
     }
