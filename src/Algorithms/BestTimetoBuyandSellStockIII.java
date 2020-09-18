@@ -33,15 +33,15 @@ public class BestTimetoBuyandSellStockIII {
 
         int[][][] dp = new int[len][3][2];
 
-        // 完成交易0次 手上无股票
+        // 完成了不超过交易0次 手上无股票
         dp[0][0][0] = 0;
-        // 完成交易0次 手上有股票
+        // 完成了不超过交易0次 手上有股票
         dp[0][0][1] = -prices[0];
-        // 完成交易1次 手上无股票
+        // 完成了不超过交易1次 手上无股票
         dp[0][1][0] = 0;
-        // 完成交易1次 手上有股票
+        // 完成了不超过交易1次 手上有股票
         dp[0][1][1] = -prices[0];
-        // 完成交易2次 手上无股票
+        // 完成了不超过交易2次 手上无股票
         dp[0][2][0] = 0;
 
         for (int i = 1; i < len; i++) {
@@ -55,6 +55,7 @@ public class BestTimetoBuyandSellStockIII {
     }
 
     public static void main(String[] args) {
+        System.out.println(maxProfit(new int[]{1, 5, 4, 3, 2, 1,}));
         System.out.println(maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));
         System.out.println(maxProfit(new int[]{1, 2, 3, 4, 5}));
         System.out.println(maxProfit(new int[]{7, 6, 4, 3, 1}));
