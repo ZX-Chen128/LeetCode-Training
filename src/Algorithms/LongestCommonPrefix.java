@@ -15,25 +15,24 @@ package Algorithms;
 public class LongestCommonPrefix {
 
     public static String longestCommonPrefix(String[] strs) {
-
-        if (strs.length == 0 || strs == null) {
-            return "";
-        }
-
-        String prefix = strs[0];
-
-        for (String s : strs) {
-            while (s.indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
+        if(strs == null || strs.length == 0) return "";
+        String common = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            int index = 0;
+            while(index < common.length()
+                    && index < strs[i].length()
+                    && common.charAt(index) == strs[i].charAt(index)){
+                index++;
             }
+            common = common.substring(0,index);
+            if(common.equals("")) return "";
         }
-
-        return prefix;
-
+        return common;
     }
 
     public static void main(String[] args) {
-        System.out.println(LongestCommonPrefix.longestCommonPrefix(new String[]{"dog","racecar","car"}));
+        System.out.println(longestCommonPrefix(new String[]{"flower","flow","flight"}));
+        System.out.println(longestCommonPrefix(new String[]{"dog","racecar","car"}));
     }
 
 }

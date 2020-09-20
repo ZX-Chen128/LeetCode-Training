@@ -1,44 +1,35 @@
 package Algorithms;
 
 public class RotateList {
+
     public static ListNode rotateRight(ListNode head, int k) {
-        if(head==null){
-            return null;
+        if(head == null || head.next == null || k == 0) return head;
+
+        int length = 0;
+        ListNode findLength = head;
+        while (findLength != null) {
+            findLength = findLength.next;
+            length++;
         }
-        if(head.next==null){
-            return head;
-        }
-        ListNode list = new ListNode(0);
-        ListNode first = head;
-        int count = 0;
-        ListNode test = head;
-        while(test!=null){
-            test=test.next;
-            count++;
-        }
-        k=k%count;
-        if(k==0){
-            return head;
-        }
+
+        k %= length;
+        if(k == 0) return head;
+
+        ListNode fast = head;
+        ListNode slow = head;
         for (int i = 0; i < k; i++) {
-            first = rotate(first);
-            list.next = first;
-
+            fast = fast.next;
         }
-        return list.next;
-    }
-
-    public static ListNode rotate(ListNode head){
-        ListNode last = head;
-        ListNode lastbutone = head;
-        last = last.next;
-        while(last.next!=null){
-            last = last.next;
-            lastbutone = lastbutone.next;
+        while(fast.next!=null){
+            fast = fast.next;
+            slow = slow.next;
         }
-        last.next = head;
-        lastbutone.next = null;
-        return last;
+        ListNode newEnd = slow;
+        ListNode newHead = slow.next;
+
+        fast.next = head;
+        newEnd.next = null;
+        return newHead;
     }
 
     public static void main(String[] args) {
