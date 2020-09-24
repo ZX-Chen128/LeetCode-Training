@@ -2,53 +2,45 @@ package Algorithms;
 
 public class LongestPalindromicSubstring {
 
-    public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
+    public static String longestPalindrome(String s) {
+        if(s.length() <= 1) {
+            return s;
         }
-        int n = s.length();
-        boolean[][] isPalindrome = new boolean[n + 1][n + 1];
-        String max = "";
-        for (int j = 0; j < n + 1; j++) {
-            for (int i = j; i >= 0; i--) {
-                if (i == j || i + 1 == j) {
-                    isPalindrome[i][j] = true;
-                } else if (s.charAt(i) == s.charAt(j - 1) && isPalindrome[i + 1][j - 1]) {
-                    isPalindrome[i][j] = true;
-                }
 
-                if (i != j && isPalindrome[i][j] && max.length() < j - i) {
-                    max = s.substring(i, j);
-                }
-            }
-        }
-        return max;
-    }
+        int len = s.length();
 
-    public String longestPalindrome2(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
+        boolean[][] dp = new boolean[len][len];
+        char[] array = s.toCharArray();
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
         }
-        int n = s.length();
-        String max = "";
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                if (isPalindrom(s.substring(i, j + 1)) && j - i + 1 > max.length()) {
-                    max = s.substring(i, j + 1);
+
+        int max = 1;
+        int index = 0;
+
+        for (int i = 1; i < len; i++) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] != array[i]) {
+                    dp[j][i] = false;
+                } else {
+                    if (i - j <= 2) {
+                        dp[j][i] = true;
+                    } else {
+                        dp[j][i] = dp[j + 1][i - 1];
+                    }
+                }
+                if (dp[j][i] && i - j + 1 > max) {
+                    max = i - j + 1;
+                    index = j;
                 }
             }
         }
-        return max;
-    }
-
-    public boolean isPalindrom(String s) {
-        String x = new StringBuilder(s).reverse().toString();
-        return x.equals(s);
+        return s.substring(index, max + index);
     }
 
     public static void main(String[] args) {
-        LongestPalindromicSubstring l = new LongestPalindromicSubstring();
-        System.out.println(l.longestPalindrome("abcbii"));
+        System.out.println(longestPalindrome("ac"));
+        System.out.println(longestPalindrome("abcbiilmnnmliksl"));
     }
 
 }

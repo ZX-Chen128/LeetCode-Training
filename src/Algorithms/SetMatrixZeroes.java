@@ -44,28 +44,50 @@ import java.util.Set;
 public class SetMatrixZeroes {
 
     public static void setZeroes(int[][] matrix) {
+
         int m = matrix.length;
         int n = matrix[0].length;
 
-        Set<Integer> line = new HashSet<>();
-        Set<Integer> column = new HashSet<>();
+        boolean flag_row = false;
+        boolean flag_col = false;
+
+        for (int i = 0; i < n; i++) {
+            if (matrix[0][i] == 0) {
+                flag_row = true;
+            }
+        }
 
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+            if (matrix[i][0] == 0) {
+                flag_col = true;
+            }
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (matrix[i][j] == 0) {
-                    line.add(i);
-                    column.add(j);
+                    matrix[i][0] = matrix[0][j] = 0;
                 }
             }
         }
-        for (int lineIndex : line) {
-            for (int i = 0; i < n; i++) {
-                matrix[lineIndex][i] = 0;
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
             }
         }
-        for(int columnIndex : column){
+
+        if(flag_row) {
+            for (int i = 0; i < n; i++) {
+                matrix[0][i] = 0;
+            }
+        }
+
+        if(flag_col) {
             for (int i = 0; i < m; i++) {
-                matrix[i][columnIndex] = 0;
+                matrix[i][0] = 0;
             }
         }
         for (int i = 0; i < m; i++) {
