@@ -1,43 +1,42 @@
 package Algorithms;
 
+import java.util.concurrent.CountDownLatch;
+
 /**
  * @Author: Chen Zixin
  * @Date: 2020/9/29 4:16 下午
  */
 public class PrintinOrder {
 
-    public Object object = new Object();
+    //声明两个 CountDownLatch变量
+    private CountDownLatch countDownLatch01;
+    private CountDownLatch countDownLatch02;
 
-    public int state = 0;
-
+    public PrintinOrder() {
+        //初始化每个CountDownLatch的值为1，表示有一个线程执行完后，执行等待的线程
+        countDownLatch01 = new CountDownLatch(1);
+        countDownLatch02 = new CountDownLatch(1);
+    }
     public void first(Runnable printFirst) throws InterruptedException {
-        synchronized (object) {
-            while(state != 0) object.wait();
-            // printFirst.run() outputs "first". Do not change or remove this line.
-            printFirst.run();
-            state = 1;
-            object.notifyAll();
-        }
+        //当前只有first线程没有任何的阻碍，其余两个线程都处于等待阶段
+        // printFirst.run() outputs "first". Do not change or remove this line.
+        printFirst.run();
+        //直到CountDownLatch01里面计数为0才执行因调用该countDownCatch01.await()而等待的线程
+        countDownLatch01.countDown();
     }
-
     public void second(Runnable printSecond) throws InterruptedException {
-        synchronized (object) {
-            while (state != 1) object.wait();
-            // printSecond.run() outputs "second". Do not change or remove this line.
-            printSecond.run();
-            state = 2;
-            object.notifyAll();
-        }
+        //只有countDownLatch01为0才能通过，否则会一直阻塞
+        countDownLatch01.await();
+        // printSecond.run() outputs "second". Do not change or remove this line.
+        printSecond.run();
+        //直到CountDownLatch02里面计数为0才执行因调用该countDownCatch02.await()而等待的线程
+        countDownLatch02.countDown();
     }
-
     public void third(Runnable printThird) throws InterruptedException {
-        synchronized (object) {
-            while (state != 2) object.wait();
-            // printThird.run() outputs "third". Do not change or remove this line.
-            printThird.run();
-            state = 3;
-            object.notifyAll();
-        }
+        //只有countDownLatch02为0才能通过，否则会一直阻塞
+        countDownLatch02.await();
+        // printThird.run() outputs "third". Do not change or remove this line.
+        printThird.run();
     }
 
     public static void main(String[] args) throws InterruptedException {
