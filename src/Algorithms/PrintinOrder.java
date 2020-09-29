@@ -1,6 +1,6 @@
 package Algorithms;
 
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
 
 /**
  * @Author: Chen Zixin
@@ -8,36 +8,35 @@ import java.util.concurrent.CountDownLatch;
  */
 public class PrintinOrder {
 
-    //声明两个 CountDownLatch变量
-    private CountDownLatch countDownLatch01;
-    private CountDownLatch countDownLatch02;
+    //声明两个 Semaphore变量
+    private Semaphore spa,spb;
 
     public PrintinOrder() {
-        //初始化每个CountDownLatch的值为1，表示有一个线程执行完后，执行等待的线程
-        countDownLatch01 = new CountDownLatch(1);
-        countDownLatch02 = new CountDownLatch(1);
+        //初始化Semaphore为0的原因：如果这个Semaphore为零，如果另一线程调用(acquire)这个Semaphore就会产生阻塞，便可以控制second和third线程的执行
+        spa = new Semaphore(0);
+        spb = new Semaphore(0);
     }
+
     public void first(Runnable printFirst) throws InterruptedException {
-        //当前只有first线程没有任何的阻碍，其余两个线程都处于等待阶段
         // printFirst.run() outputs "first". Do not change or remove this line.
         printFirst.run();
-        //直到CountDownLatch01里面计数为0才执行因调用该countDownCatch01.await()而等待的线程
-        countDownLatch01.countDown();
+        //只有等first线程释放Semaphore后使Semaphore值为1,另外一个线程才可以调用（acquire）
+        spa.release();
     }
     public void second(Runnable printSecond) throws InterruptedException {
-        //只有countDownLatch01为0才能通过，否则会一直阻塞
-        countDownLatch01.await();
+        //只有spa为1才能执行acquire，如果为0就会产生阻塞
+        spa.acquire();
         // printSecond.run() outputs "second". Do not change or remove this line.
         printSecond.run();
-        //直到CountDownLatch02里面计数为0才执行因调用该countDownCatch02.await()而等待的线程
-        countDownLatch02.countDown();
+        spb.release();
     }
     public void third(Runnable printThird) throws InterruptedException {
-        //只有countDownLatch02为0才能通过，否则会一直阻塞
-        countDownLatch02.await();
+        //只有spb为1才能通过，如果为0就会阻塞
+        spb.acquire();
         // printThird.run() outputs "third". Do not change or remove this line.
         printThird.run();
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         PrintinOrder po = new PrintinOrder();
