@@ -2,7 +2,7 @@ package Algorithms.JianzhiOffer;
 
 /**
  * @Author: Chen Zixin
- * @Date: 2020/10/13 11:24 上午
+ * @Date: 2020/10/13 11:44 上午
  */
 
 /**
@@ -26,7 +26,7 @@ package Algorithms.JianzhiOffer;
  * 输出：5
  */
 
-public class JZ10 {
+public class JZ10_I {
     public int fib(int n) {
         int[] res = new int[101];
         res[0] = 0;
