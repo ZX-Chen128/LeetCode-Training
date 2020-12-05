@@ -1,0 +1,27 @@
+package Algorithms;
+
+import java.util.Arrays;
+
+/**
+ * @Author: Chen Zixin
+ * @Date: 2020/12/5 4:20 下午
+ */
+public class MoveZeroes {
+    public static void moveZeroes(int[] nums) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[index++] = nums[i];
+            }
+        }
+        for (int i = index; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] test = {0,1,0,3,12};
+        MoveZeroes.moveZeroes(test);
+        System.out.println(Arrays.toString(test));
+    }
+}
