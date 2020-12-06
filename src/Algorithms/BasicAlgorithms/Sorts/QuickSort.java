@@ -2,6 +2,13 @@ package Algorithms.BasicAlgorithms.Sorts;
 
 import java.util.Arrays;
 
+/**
+ * 平均时间复杂度：O(NlogN)
+ * 最好时间复杂度：O(NlogN)
+ * 最坏时间复杂度：O(N^2)
+ * 空间复杂度：O(NlogN)
+ */
+
 public class QuickSort {
     public static void main(String[] args) {
         int[] arr = {5, 1, 7, 3, 1, 6, 9, 4};
