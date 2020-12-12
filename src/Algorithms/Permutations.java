@@ -25,42 +25,38 @@ import java.util.List;
 
 public class Permutations {
 
+    List<List<Integer>> ans = new ArrayList<>();
+
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<>();
-        int depth = nums.length;
-        boolean[] record = new boolean[depth];
+        boolean[] record = new boolean[nums.length];
+        dfs(nums, new ArrayList<>(), record, 0, nums.length);
 
-        // 传入所有dfs结果 每次的dfs数据 每个位置的记录 目前深度 最大深度
-        dfs(lists, nums, new ArrayList<>(), record, 0, depth);
-
-        return lists;
+        return ans;
     }
 
-    public void dfs(List<List<Integer>> lists,
-                    int[] nums,
+    public void dfs(int[] nums,
                     List<Integer> list,
                     boolean[] record,
                     int n,
                     int depth) {
-        if (n == depth) {
-            lists.add(new ArrayList<>(list));
+        if(n == depth) {
+            ans.add(new ArrayList<>(list));
             return;
         }
-
-        for (int i = 0; i < depth; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (!record[i]) {
-                list.add(nums[i]);
                 record[i] = true;
-                dfs(lists, nums, list, record, n + 1, depth);
+                list.add(nums[i]);
+                dfs(nums, list, record, list.size(), nums.length);
+                list.remove(n);
                 record[i] = false;
-                list.remove(list.size() - 1);
             }
         }
-
     }
 
     public static void main(String[] args) {
         Permutations p = new Permutations();
-        System.out.println(p.permute(new int[]{1, 2, 3, 4}));
+        System.out.println(p.permute(new int[]{1, 2, 3}));
     }
 }
+
