@@ -29,35 +29,26 @@ import java.util.*;
 
 public class CombinationSum {
 
+    List<List<Integer>> ans = new ArrayList<>();
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
-        List<List<Integer>> ans = new ArrayList<>();
-        Deque<Integer> path = new ArrayDeque<>();
-        dfs(candidates, 0, target, path, ans);
-
+        dfs(candidates, 0, new ArrayList<>(), target);
         return ans;
     }
 
-    public void dfs(int[] candidates, int len, int target, Deque<Integer> path, List<List<Integer>> ans) {
-
+    public void dfs(int[] candidates,int depth, List<Integer> list, int target) {
         if (target < 0) return;
+        if (target == 0) ans.add(new ArrayList<>(list));
 
-        if (target == 0) {
-            List<Integer> list = new ArrayList<>(path);
-            ans.add(list);
-        }
-
-        for (int i = len; i < candidates.length; i++) {
+        for (int i = depth; i < candidates.length; i++) {
             if(target - candidates[i] < 0) {
                 break;
             }
-            path.add(candidates[i]);
-
-            dfs(candidates, i, target - candidates[i], path, ans);
-
-            path.removeLast();
+            list.add(candidates[i]);
+            dfs(candidates, i, list, target - candidates[i]);
+            list.remove(list.size() - 1);
         }
-
     }
 
 }
