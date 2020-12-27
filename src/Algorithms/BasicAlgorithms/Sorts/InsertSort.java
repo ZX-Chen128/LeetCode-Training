@@ -2,6 +2,13 @@ package Algorithms.BasicAlgorithms.Sorts;
 
 import java.util.Arrays;
 
+/**
+ * 平均时间复杂度：O(N^2)
+ * 最好时间复杂度：O(N)
+ * 最坏时间复杂度：O(N^2)
+ * 空间复杂度：O(1)
+ */
+
 public class InsertSort {
 
     public int[] insertSort(int[] nums) {

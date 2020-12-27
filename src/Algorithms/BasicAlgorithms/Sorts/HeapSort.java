@@ -2,6 +2,13 @@ package Algorithms.BasicAlgorithms.Sorts;
 
 import java.util.Arrays;
 
+/**
+ * 平均时间复杂度：O(NlogN)
+ * 最好时间复杂度：O(NlogN)
+ * 最坏时间复杂度：O(NlogN)
+ * 空间复杂度：O(1)
+ */
+
 public class HeapSort {
     /**
      * 创建堆，
